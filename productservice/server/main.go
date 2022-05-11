@@ -5,7 +5,7 @@ import (
 	"net"
 
 	"github.com/evgeniy-dammer/serverinterceptorsgrpc/productservice/handlers"
-	"github.com/evgeniy-dammer/serverinterceptorsgrpc/productservice/inceptors"
+	"github.com/evgeniy-dammer/serverinterceptorsgrpc/productservice/interceptors"
 	productservice "github.com/evgeniy-dammer/serverinterceptorsgrpc/productservice/proto"
 	grpc_middleware "github.com/grpc-ecosystem/go-grpc-middleware"
 	"google.golang.org/grpc"
@@ -25,8 +25,8 @@ func main() {
 	grpcServer := grpc.NewServer(
 		grpc.UnaryInterceptor(
 			grpc_middleware.ChainUnaryServer(
-				inceptors.DateLogInceptor,
-				inceptors.MethodLogInceptor,
+				interceptors.DateLogInterceptor,
+				interceptors.MethodLogInterceptor,
 			),
 		),
 	)
